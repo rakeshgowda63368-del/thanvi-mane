@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THANVI MANE | ಧನ್ಯ ಮನೆ — Modern Authentic Homemade Food Brand Stylesheet
+   THANVI MANE | ಥಾನ್ವಿ ಮನೆ — Modern Authentic Homemade Food Brand Stylesheet
    Color Palette strictly extracted & harmonized with foodlogo.png
    ========================================================================== */
 
@@ -1845,6 +1845,10 @@ button {
   background: #F0FAF4;
 }
 
+.card-location {
+  grid-column: span 2;
+}
+
 .contact-card-icon {
   width: 42px;
   height: 42px;
@@ -3307,6 +3311,10 @@ button {
   .contact-cards {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .card-location {
+    grid-column: auto;
   }
 
   .contact-card {

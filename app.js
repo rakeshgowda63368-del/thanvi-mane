@@ -1,5 +1,5 @@
 /**
- * Thanvi Mane | ಧನ್ಯ ಮನೆ
+ * Thanvi Mane | ಥಾನ್ವಿ ಮನೆ
  * Interactive Application Logic: Product Catalogue, Cart Drawer, WhatsApp Checkout, FAQ, and Modals
  */
 
@@ -402,30 +402,60 @@ function submitWhatsAppOrder(e) {
 
   const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
-  // Format Items List
+  // Safe Universal Emoji Icons (Surrogate-Pair encoded for universal compatibility)
+  const ICONS = {
+    leaf: "\uD83C\uDF3F",       // 🌿
+    cart: "\uD83D\uDED2",       // 🛒
+    bullet: "\uD83D\uDD36",     // 🔸
+    dot: "\u25AB\uFE0F",        // ▫️
+    money: "\uD83D\uDCB0",      // 💰
+    truck: "\uD83D\uDE9A",      // 🚚
+    flagIN: "\uD83C\uDDEE\uD83C\uDDF3", // 🇮🇳
+    pin: "\uD83D\uDCCD",        // 📍
+    user: "\uD83D\uDC64",       // 👤
+    phone: "\uD83D\uDCDE",      // 📞
+    home: "\uD83C\uDFE0",       // 🏠
+    city: "\uD83C\uDFD9\uFE0F", // 🏙️
+    map: "\uD83D\uDDFA\uFE0F",  // 🗺️
+    pincode: "\uD83D\uDCEE",    // 📮
+    note: "\uD83D\uDCDD",       // 📝
+    sparkle: "\u2728",          // ✨
+    namaste: "\uD83D\uDE4F",    // 🙏
+    chat: "\uD83D\uDCAC"        // 💬
+  };
+
+  const divider = "━━━━━━━━━━━━━━━━━━━━";
+
+  // Format Items List with clear attractive icons
   let itemsText = "";
   cart.forEach((item, index) => {
-    itemsText += `${index + 1}. *${item.name}* (${item.kannada})\n   Weight: ${item.weight} | Qty: ${item.quantity} | Price: ₹${item.price * item.quantity}\n`;
+    itemsText += `${ICONS.bullet} *${index + 1}. ${item.name}* (${item.kannada})\n` +
+                 `   ${ICONS.dot} Weight: ${item.weight} | Qty: ${item.quantity} | Price: ₹${item.price * item.quantity}\n\n`;
   });
 
   // Construct Clean, Elegant WhatsApp Message
-  const waMessage = `*Namaskara Thanvi Mane!* 🌿 (ಧನ್ಯ ಮನೆ)
-I would like to place a homemade food order:
+  const waMessage = 
+`${ICONS.leaf} *NAMASKARA THANVI MANE!* (ಥಾನ್ವಿ ಮನೆ)
+_Authentic Homemade Traditional Foods_
+${divider}
+${ICONS.cart} *ORDER SUMMARY:*
+${divider}
+${itemsText.trim()}
 
-🛒 *ORDER ITEMS:*
-${itemsText}
-💰 *TOTAL AMOUNT:* ₹${subtotal}
-🚚 *DELIVERY:* Pan India Safe Courier 🇮🇳
-
-📍 *CUSTOMER DELIVERY DETAILS:*
-- *Customer Name:* ${name}
-- *Contact Number:* ${phone}
-- *Door Address:* ${address}
-- *City / Town:* ${city}
-- *State:* ${state}
-- *Pincode:* ${pincode}
-${notes ? `- *Special Instructions:* ${notes}\n` : ''}
-Please confirm my order and share the UPI / payment details. Thank you!`;
+${divider}
+${ICONS.money} *TOTAL AMOUNT:* ₹${subtotal}
+${ICONS.truck} *DELIVERY:* Pan India Safe Courier ${ICONS.flagIN}
+${divider}
+${ICONS.pin} *CUSTOMER DELIVERY DETAILS:*
+${ICONS.user} *Name:* ${name}
+${ICONS.phone} *Phone:* ${phone}
+${ICONS.home} *Address:* ${address}
+${ICONS.city} *City / Town:* ${city}
+${ICONS.map} *State:* ${state}
+${ICONS.pincode} *Pincode:* ${pincode}
+${notes ? `${ICONS.note} *Instructions:* ${notes}\n` : ''}${divider}
+${ICONS.sparkle} Please confirm my order and share UPI / payment details.
+${ICONS.namaste} *Dhanyavadagalu!*`;
 
   const encodedUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
 
@@ -445,15 +475,27 @@ function handleQuickContact(e) {
   const city = document.getElementById("contactCity").value.trim();
   const msg = document.getElementById("contactMsg").value.trim();
 
-  const waText = `*Namaskara Thanvi Mane!* 🌿
-I have an inquiry regarding your traditional homemade foods:
+  const ICONS = {
+    leaf: "\uD83C\uDF3F",       // 🌿
+    user: "\uD83D\uDC64",       // 👤
+    phone: "\uD83D\uDCDE",      // 📞
+    pin: "\uD83D\uDCCD",        // 📍
+    chat: "\uD83D\uDCAC",       // 💬
+    namaste: "\uD83D\uDE4F"     // 🙏
+  };
+  const divider = "━━━━━━━━━━━━━━━━━━━━";
 
-- *Name:* ${name}
-- *Phone:* ${phone}
-- *Location:* ${city}
-- *Inquiry / Requirement:* ${msg || 'Interested in ordering traditional homemade items.'}
-
-Kindly assist me. Thank you!`;
+  const waText = 
+`${ICONS.leaf} *NAMASKARA THANVI MANE!* (ಥಾನ್ವಿ ಮನೆ)
+_Customer Inquiry & Special Orders_
+${divider}
+${ICONS.user} *Name:* ${name}
+${ICONS.phone} *Phone:* ${phone}
+${ICONS.pin} *Location:* ${city}
+${ICONS.chat} *Inquiry / Requirement:*
+${msg || 'Interested in ordering traditional homemade items.'}
+${divider}
+${ICONS.namaste} *Dhanyavadagalu!*`;
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
   window.open(url, "_blank");
