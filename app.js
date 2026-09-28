@@ -290,6 +290,22 @@ function updateCartUI() {
   if (subtotalEl) subtotalEl.textContent = `₹${subtotal}`;
   if (totalEl) totalEl.textContent = `₹${subtotal}`;
 
+  // Update Mobile Floating Cart Bar
+  const mCartBar = document.getElementById("mobileFloatingCartBar");
+  const mCartCount = document.getElementById("mCartCount");
+  const mCartTotal = document.getElementById("mCartTotal");
+  if (mCartBar) {
+    if (totalCount > 0) {
+      mCartBar.classList.add("visible");
+      document.body.classList.add("has-cart-bar");
+      if (mCartCount) mCartCount.textContent = `${totalCount} ${totalCount === 1 ? 'Item' : 'Items'}`;
+      if (mCartTotal) mCartTotal.textContent = `₹${subtotal}`;
+    } else {
+      mCartBar.classList.remove("visible");
+      document.body.classList.remove("has-cart-bar");
+    }
+  }
+
   // Render Items List inside Drawer
   const container = document.getElementById("cartItemsList");
   const footer = document.getElementById("cartFooter");

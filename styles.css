@@ -2877,16 +2877,32 @@ button {
 }
 
 @media (max-width: 768px) {
-  /* Announcement bar */
+  /* Hide Watermark Text on Mobile for Ultra Clean Visuals */
+  .bg-keyword-watermark {
+    display: none !important;
+  }
+
+  /* Announcement Bar */
   .announcement-bar {
-    padding: 6px 0;
-    font-size: 0.74rem;
+    padding: 6px 10px;
+    font-size: 0.72rem;
   }
 
   .announcement-inner {
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    gap: 6px;
+  }
+
+  .announcement-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .announcement-contact {
@@ -2895,12 +2911,12 @@ button {
 
   /* Header & Navbar */
   .site-header {
-    --header-height: 64px;
+    --header-height: 58px;
   }
 
   .header-inner {
-    height: 64px;
-    padding: 0 4px;
+    height: 58px;
+    padding: 0 12px;
   }
 
   .desktop-nav {
@@ -2913,144 +2929,193 @@ button {
 
   .mobile-toggle-btn {
     display: flex;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
   }
 
   .brand-logo {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
   }
 
   .brand-en {
-    font-size: 1.08rem;
-    letter-spacing: 0.03em;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
   }
 
   .brand-kn-badge {
-    font-size: 0.7rem;
-    padding: 1px 6px;
+    font-size: 0.66rem;
+    padding: 1px 5px;
   }
 
   .brand-sub {
-    font-size: 0.6rem;
-    letter-spacing: 0.04em;
+    font-size: 0.58rem;
+    letter-spacing: 0.03em;
   }
 
   .cart-trigger-btn {
-    padding: 6px 11px;
-    font-size: 0.82rem;
-    gap: 6px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    gap: 5px;
+    border-radius: 20px;
   }
 
   .cart-text {
-    display: none; /* Icon + badge only on mobile for ultimate cleanliness */
+    display: none; /* Icon + badge only on mobile for clean design */
   }
 
   .cart-badge {
-    min-width: 18px;
-    height: 18px;
-    font-size: 0.68rem;
+    min-width: 17px;
+    height: 17px;
+    font-size: 0.65rem;
   }
 
   /* Hero Section */
   .hero-section {
-    padding: 30px 0 44px;
+    padding: 20px 0 32px;
     text-align: center;
   }
 
   .hero-badge-wrap {
     justify-content: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 6px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
   }
 
   .badge-pan-india, .badge-traditional {
-    font-size: 0.72rem;
-    padding: 5px 11px;
+    font-size: 0.68rem;
+    padding: 4px 10px;
+    border-radius: 20px;
   }
 
   .hero-title {
-    font-size: 1.95rem;
-    line-height: 1.22;
-    margin-bottom: 12px;
+    font-size: 1.72rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
   }
 
   .hero-subtitle-kannada {
-    font-size: 0.95rem;
-    margin-bottom: 12px;
-    line-height: 1.45;
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    padding: 0 4px;
   }
 
   .hero-description {
-    font-size: 0.92rem;
-    line-height: 1.6;
-    margin-bottom: 24px;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    padding: 0 4px;
+    color: var(--text-muted);
   }
 
-  /* Smooth aligned buttons on mobile */
   .hero-cta-group {
     flex-direction: column;
     width: 100%;
-    max-width: 340px;
-    margin: 0 auto 26px;
-    gap: 12px;
+    max-width: 320px;
+    margin: 0 auto 18px;
+    gap: 10px;
   }
 
   .hero-cta-group .btn {
     width: 100%;
-    height: 48px;
-    padding: 0 20px;
-    font-size: 0.94rem;
+    height: 46px;
+    padding: 0 18px;
+    font-size: 0.9rem;
     justify-content: center;
+    border-radius: 24px;
   }
 
+  /* Clean Balanced Trust Row */
   .hero-trust-row {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
+    max-width: 350px;
+    margin: 0 auto;
   }
 
   .trust-mini-pill {
-    font-size: 0.75rem;
-    padding: 5px 10px;
+    font-size: 0.7rem;
+    padding: 4px 9px;
+    border-radius: 16px;
+    gap: 4px;
+  }
+
+  .hero-visual {
+    margin-top: 22px;
   }
 
   .hero-card-frame {
-    max-width: 100%;
-    padding: 8px;
-    border-radius: 20px;
+    max-width: 340px;
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 18px;
   }
 
   .hero-main-img {
-    height: 250px;
-    border-radius: 14px;
+    height: 195px;
+    border-radius: 13px;
   }
 
   .floating-badge {
-    display: none; /* Keep mobile view clean */
+    display: none; /* Keep mobile view clutter-free */
   }
 
-  /* Trust Highlights Strip */
+  /* Trust Highlights Strip (Compact 2x2 Grid) */
   .trust-strip {
-    padding: 20px 0;
+    padding: 16px 0;
   }
 
   .trust-strip-inner {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   .trust-strip-item {
-    background: var(--bg-cream-soft);
+    background: #FFFFFF;
     border: 1px solid var(--border-subtle);
-    padding: 12px 14px;
+    padding: 10px 8px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
   }
 
-  /* Filter Pills Swipe on Mobile */
+  .trust-strip-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .trust-strip-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .trust-strip-info h4 {
+    font-size: 0.72rem;
+    line-height: 1.25;
+    margin-bottom: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  .trust-strip-info p {
+    font-size: 0.66rem;
+    line-height: 1.25;
+    color: var(--text-light);
+  }
+
+  /* Filter Pills - Seamless Horizontal Scrolling */
   .filter-wrapper {
-    margin: 20px 0 28px;
+    margin: 14px 0 20px;
     justify-content: flex-start;
     overflow: hidden;
   }
@@ -3061,10 +3126,11 @@ button {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 6px;
-    border-radius: 30px;
-    max-width: 100%;
+    padding: 2px 4px;
+    background: transparent;
+    border: none;
     gap: 6px;
+    max-width: 100%;
   }
 
   .filter-pills::-webkit-scrollbar {
@@ -3074,243 +3140,403 @@ button {
   .filter-pill {
     flex-shrink: 0;
     white-space: nowrap;
-    padding: 7px 14px;
-    font-size: 0.8rem;
+    padding: 6px 13px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-dark);
   }
 
-  /* Product Cards & Buttons */
+  .filter-pill.active {
+    background: var(--brown-dark);
+    color: #FFFFFF;
+    border-color: var(--brown-dark);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Product Section & Modern 2-Column Grid */
   .shop-section {
-    padding: 44px 0;
+    padding: 30px 0;
+  }
+
+  .section-tag {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    margin-bottom: 6px;
   }
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
   }
 
   .section-subtitle {
-    font-size: 0.92rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    padding: 0 6px;
   }
 
   .product-grid {
-    grid-template-columns: 1fr;
-    max-width: 360px;
-    margin: 0 auto;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+    margin: 0;
   }
 
   .product-card {
-    border-radius: 18px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(31, 17, 11, 0.04);
+  }
+
+  .product-img-frame {
+    padding-top: 80%;
+    position: relative;
+  }
+
+  .discount-badge {
+    top: 6px;
+    left: 6px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 12px;
+  }
+
+  .weight-tag {
+    bottom: 6px;
+    right: 6px;
+    font-size: 0.62rem;
+    padding: 2px 5px;
+    border-radius: 8px;
   }
 
   .product-body {
-    padding: 14px 14px 16px;
+    padding: 8px 8px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .product-category-label {
+    font-size: 0.6rem;
+    margin-bottom: 2px;
   }
 
   .product-title-en {
-    font-size: 1.02rem;
+    font-size: 0.86rem;
+    line-height: 1.25;
+    margin-bottom: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.15em;
   }
 
   .product-title-kn {
-    font-size: 0.88rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-pricing {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px 4px;
+    margin-top: auto;
+    margin-bottom: 8px;
   }
 
   .current-price {
-    font-size: 1.22rem;
+    font-size: 1.08rem;
+    font-weight: 800;
+  }
+
+  .original-price {
+    font-size: 0.74rem;
+  }
+
+  .savings-label {
+    font-size: 0.6rem;
+    padding: 1px 4px;
+    border-radius: 4px;
   }
 
   .btn-add-cart, .btn-stay-tuned {
     width: 100%;
-    height: 44px;
-    font-size: 0.88rem;
-    padding: 0 14px;
-    border-radius: 26px;
-    transition: transform 0.15s ease, background 0.2s ease;
+    height: 35px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0 6px;
+    border-radius: 18px;
+    gap: 4px;
   }
 
-  .btn-add-cart:active, .btn-stay-tuned:active {
-    transform: scale(0.97);
+  .btn-add-cart svg {
+    width: 13px;
+    height: 13px;
   }
 
-  /* Spotlight Section */
+  /* Spotlight Section (Nati Koli Sambar) */
   .coming-soon-spotlight {
-    padding: 10px 0 44px;
+    padding: 10px 0 32px;
   }
 
   .spotlight-card {
-    padding: 26px 18px;
-    border-radius: 22px;
-    gap: 24px;
+    padding: 18px 14px;
+    border-radius: 18px;
+    gap: 16px;
   }
 
   .spotlight-title {
-    font-size: 1.75rem;
+    font-size: 1.45rem;
+    line-height: 1.2;
   }
 
   .spotlight-kn {
-    font-size: 1.15rem;
+    font-size: 1.02rem;
   }
 
   .spotlight-tagline {
-    font-size: 0.96rem;
+    font-size: 0.84rem;
+    margin-bottom: 10px;
   }
 
   .spotlight-desc {
-    font-size: 0.88rem;
-    margin-bottom: 18px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
   }
 
   .spotlight-img {
-    height: 230px;
+    height: 180px;
+    border-radius: 13px;
+  }
+
+  .spotlight-features {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .spotlight-feature-tag {
+    font-size: 0.7rem;
+    padding: 4px 8px;
   }
 
   .spotlight-cta-wrap {
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     width: 100%;
   }
 
   .spotlight-cta-wrap .btn {
     width: 100%;
-    height: 46px;
+    height: 44px;
+    font-size: 0.86rem;
+    border-radius: 22px;
   }
 
   /* Story Section */
   .story-section {
-    padding: 44px 0;
+    padding: 32px 0;
   }
 
   .story-img {
-    height: 280px;
+    height: 210px;
+    border-radius: 15px;
   }
 
   .story-stamp {
-    width: 80px;
-    height: 80px;
-    bottom: -10px;
-    right: -10px;
+    width: 68px;
+    height: 68px;
+    bottom: -6px;
+    right: -6px;
   }
 
-  .stamp-kn {
-    font-size: 0.7rem;
+  .story-lead {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
 
-  .stamp-text {
-    font-size: 0.55rem;
+  .story-text {
+    font-size: 0.84rem;
+    line-height: 1.55;
+    margin-bottom: 16px;
   }
 
   .story-feature-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 10px;
+  }
+
+  .story-feature-item {
+    padding: 10px 12px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .story-feature-item h4 {
+    font-size: 0.86rem;
+    margin-bottom: 2px;
+  }
+
+  .story-feature-item p {
+    font-size: 0.76rem;
   }
 
   /* Delivery Section */
   .delivery-section {
-    padding: 44px 0;
+    padding: 32px 0;
   }
 
   .delivery-card {
-    padding: 24px 18px;
-    border-radius: 22px;
-    gap: 28px;
+    padding: 18px 14px;
+    border-radius: 18px;
+    gap: 18px;
   }
 
   .delivery-title {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
+    line-height: 1.25;
   }
 
   .delivery-desc {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .delivery-trust-checks {
+    gap: 8px;
+    margin-bottom: 16px;
   }
 
   .trust-check-item {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
   }
 
   .delivery-cta-wrap {
     flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    gap: 8px;
+    width: 100%;
   }
 
   .delivery-cta-wrap .btn {
     width: 100%;
-    height: 46px;
+    height: 44px;
+    font-size: 0.86rem;
+    border-radius: 22px;
   }
 
-  .delivery-note {
-    text-align: center;
-  }
-
-  /* Why Us Cards */
+  /* Why Us Section */
   .why-us-section {
-    padding: 44px 0;
+    padding: 32px 0;
   }
 
   .why-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 28px;
+    gap: 10px;
+    margin-top: 18px;
   }
 
   .why-card {
-    padding: 20px 16px;
-    border-radius: 16px;
+    padding: 14px 12px;
+    border-radius: 13px;
   }
 
-  /* Reviews & FAQs */
-  .testimonials-section, .faq-section {
-    padding: 44px 0;
+  .why-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 28px;
+  .why-card-title {
+    font-size: 0.98rem;
+    margin-bottom: 4px;
   }
 
-  .testimonial-card {
-    padding: 22px 18px;
-    border-radius: 18px;
+  .why-card-desc {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  /* FAQs */
+  .faq-section {
+    padding: 32px 0;
   }
 
   .faq-accordion-container {
-    margin-top: 28px;
-    gap: 10px;
+    margin-top: 18px;
+    gap: 8px;
   }
 
   .faq-question {
-    padding: 16px 18px;
-    font-size: 0.95rem;
+    padding: 13px 15px;
+    font-size: 0.86rem;
+    line-height: 1.35;
+    border-radius: 12px;
+  }
+
+  .faq-answer {
+    padding: 0 15px 12px;
+    font-size: 0.82rem;
+    line-height: 1.5;
   }
 
   /* Contact Section */
   .contact-section {
-    padding: 44px 0;
+    padding: 32px 0;
   }
 
   .contact-box {
-    padding: 24px 18px;
-    border-radius: 22px;
-    gap: 28px;
+    padding: 18px 14px;
+    border-radius: 18px;
+    gap: 20px;
   }
 
   .brand-identity-alt {
-    gap: 12px;
+    gap: 10px;
+    margin-bottom: 12px;
   }
 
   .contact-logo {
-    width: 54px;
-    height: 54px;
+    width: 46px;
+    height: 46px;
   }
 
   .contact-brand-name {
-    font-size: 1.25rem;
+    font-size: 1.12rem;
+  }
+
+  .contact-tagline {
+    font-size: 0.76rem;
+  }
+
+  .contact-intro {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
   }
 
   .contact-cards {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .card-location {
@@ -3318,29 +3544,86 @@ button {
   }
 
   .contact-card {
-    padding: 12px 14px;
+    padding: 11px 13px;
+    border-radius: 12px;
+    gap: 11px;
+  }
+
+  .contact-card-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contact-card-text .label {
+    font-size: 0.66rem;
+  }
+
+  .contact-card-text .value {
+    font-size: 0.84rem;
   }
 
   .form-container-card {
-    padding: 20px 16px;
-    border-radius: 18px;
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .form-container-card h3 {
+    font-size: 1.12rem;
+    margin-bottom: 3px;
+  }
+
+  .form-container-card p {
+    font-size: 0.78rem;
+    margin-bottom: 14px;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+    margin-bottom: 3px;
+  }
+
+  .form-group input, .form-group textarea {
+    font-size: 16px; /* Prevents auto-zoom on mobile safari */
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .form-container-card .btn {
+    height: 45px;
+    font-size: 0.88rem;
+    border-radius: 23px;
   }
 
   /* Footer */
   .site-footer {
-    padding: 44px 0 0;
+    padding: 32px 0 0;
   }
 
   .footer-main {
     grid-template-columns: 1fr;
-    gap: 30px;
-    padding-bottom: 36px;
+    gap: 24px;
+    padding-bottom: 26px;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+  }
+
+  .footer-heading {
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-links li a {
+    font-size: 0.82rem;
   }
 
   .footer-bottom-inner {
     flex-direction: column;
     text-align: center;
-    gap: 8px;
+    gap: 6px;
+    padding: 14px 0 18px;
+    font-size: 0.72rem;
   }
 
   /* Full-width Cart Drawer on Mobile */
@@ -3350,83 +3633,155 @@ button {
   }
 
   .cart-drawer-header {
-    padding: 16px 18px;
+    padding: 14px 16px;
   }
 
   .cart-items-container {
-    padding: 14px 16px;
-    gap: 12px;
-  }
-
-  .cart-item-card {
-    padding: 10px;
+    padding: 12px 14px;
     gap: 10px;
   }
 
+  .cart-item-card {
+    padding: 9px;
+    gap: 9px;
+  }
+
   .cart-item-thumb {
-    width: 62px;
-    height: 62px;
+    width: 58px;
+    height: 58px;
   }
 
   .qty-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
   }
 
   .cart-drawer-footer {
-    padding: 16px 18px;
+    padding: 14px 16px;
   }
 
   .cart-actions-group .btn {
-    height: 48px;
-    font-size: 0.94rem;
+    height: 46px;
+    font-size: 0.92rem;
   }
 
   /* Full Screen / Responsive Modal on Mobile */
   .modal-backdrop {
-    padding: 12px;
+    padding: 10px;
   }
 
   .modal-dialog {
     max-width: 100%;
-    border-radius: 20px;
+    border-radius: 18px;
     max-height: 94vh;
   }
 
   .modal-header {
-    padding: 18px 20px;
+    padding: 16px 18px;
   }
 
   .modal-header h3 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 
   .modal-body {
-    padding: 18px 20px;
-  }
-
-  .form-group input, .form-group textarea {
-    font-size: 16px; /* Prevents auto-zoom on mobile safari */
-    padding: 11px 14px;
+    padding: 16px 18px;
   }
 
   .modal-actions .btn {
-    height: 50px;
-    font-size: 0.96rem;
+    height: 48px;
+    font-size: 0.92rem;
   }
 
   /* Floating WhatsApp on Mobile */
   .floating-whatsapp-btn {
-    width: 52px;
-    height: 52px;
-    bottom: 20px;
-    right: 18px;
+    width: 48px;
+    height: 48px;
+    bottom: 18px;
+    right: 16px;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+    transition: bottom 0.25s ease, transform 0.2s ease;
   }
 
   .floating-whatsapp-btn svg {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Mobile Floating Quick Cart Bar */
+  .mobile-floating-cart-bar {
+    display: none;
+    position: fixed;
+    bottom: 14px;
+    left: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-main) 100%);
+    color: #FFFFFF;
+    padding: 11px 16px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(10, 55, 30, 0.45), 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 190;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: slideUpFloat 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-floating-cart-bar.visible {
+    display: flex;
+  }
+
+  .m-cart-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .m-cart-count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .m-cart-total {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+  }
+
+  .m-cart-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFFFFF;
+    color: var(--forest-dark);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* When bottom cart bar is visible, shift floating WhatsApp button up */
+  body.has-cart-bar .floating-whatsapp-btn {
+    bottom: 78px;
+  }
+
+  @keyframes slideUpFloat {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
+
 
