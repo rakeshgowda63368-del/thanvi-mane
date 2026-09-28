@@ -922,6 +922,10 @@ button {
   font-weight: 700;
   padding: 3px 9px;
   border-radius: 12px;
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-body {

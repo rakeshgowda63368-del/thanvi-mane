@@ -13,35 +13,35 @@ const PRODUCTS = [
     name: "Sun-Dried Curd Chillies",
     kannada: "ಮಜ್ಜಿಗೆ ಮೆಣಸಿನಕಾಯಿ",
     weight: "100gm",
-    sellingPrice: 150,
+    sellingPrice: 125,
     originalPrice: 300,
     category: "Pickles",
     image: "assets/curd_chillies.jpg",
-    discountTag: "50% OFF",
+    discountTag: "58% OFF",
     desc: "Crispy salted curd-soaked sun-dried chillies (Sandige Menasu). Perfect side for curd rice."
   },
   {
     id: 2,
     name: "Herale Kayi Pickles",
     kannada: "ಹೇರಳೆ ಕಾಯಿ ಉಪ್ಪಿನಕಾಯಿ",
-    weight: "250gm",
-    sellingPrice: 160,
+    weight: "200gm",
+    sellingPrice: 100,
     originalPrice: 200,
     category: "Pickles",
     image: "assets/herale_kayi.jpg",
-    discountTag: "20% OFF",
-    desc: "Authentic Malnad citron wild lemon pickle seasoned with mustard, fenugreek, and cold-pressed oil."
+    discountTag: "50% OFF",
+    desc: "Authentic Malnad citron wild lemon pickle. Purely hand made with no preservatives."
   },
   {
     id: 3,
     name: "Lemon Pickles",
     kannada: "ನಿಂಬೆಕಾಯಿ ಉಪ್ಪಿನಕಾಯಿ",
-    weight: "250gm",
-    sellingPrice: 160,
+    weight: "200gm",
+    sellingPrice: 100,
     originalPrice: 200,
     category: "Pickles",
     image: "assets/lemon_pickle.jpg",
-    discountTag: "20% OFF",
+    discountTag: "50% OFF",
     desc: "Traditional homemade juicy lemon pickle soaked with pure red spices and aromatic tempering."
   },
   {
@@ -49,11 +49,11 @@ const PRODUCTS = [
     name: "Chakkuli",
     kannada: "ಚಕ್ಕುಲಿ",
     weight: "250gm",
-    sellingPrice: 150,
+    sellingPrice: 125,
     originalPrice: 200,
     category: "Snacks",
     image: "assets/chakkuli.jpg",
-    discountTag: "25% OFF",
+    discountTag: "38% OFF",
     desc: "Concentric crispy spiral savouries made with roasted lentils, cumin, and white sesame seeds."
   },
   {
@@ -61,11 +61,11 @@ const PRODUCTS = [
     name: "Kodubale",
     kannada: "ಕೋಡುಬಳೆ",
     weight: "250gm",
-    sellingPrice: 150,
+    sellingPrice: 125,
     originalPrice: 200,
     category: "Snacks",
     image: "assets/kodubale.jpg",
-    discountTag: "25% OFF",
+    discountTag: "38% OFF",
     desc: "Classic Karnataka ring snack with signature crunch, hints of hing, grated coconut, and red chilli."
   },
   {
@@ -74,22 +74,22 @@ const PRODUCTS = [
     kannada: "ಹುಚ್ಚೆಳ್ಳು ಪುಡಿ",
     weight: "250gm",
     sellingPrice: 125,
-    originalPrice: 150,
+    originalPrice: 200,
     category: "Powders",
     image: "assets/hucchellu_pudi.jpg",
-    discountTag: "17% OFF",
+    discountTag: "38% OFF",
     desc: "Traditional North Karnataka niger seed dry chutney powder. Unbeatable with jowar roti and ghee."
   },
   {
     id: 7,
     name: "Masala Papad",
     kannada: "ಮಸಾಲಾ ಹಪ್ಪಳ",
-    weight: "50 pcs / 250gm",
-    sellingPrice: 150,
+    weight: "50pcs / 250gm",
+    sellingPrice: 125,
     originalPrice: 200,
     category: "Papad",
     image: "assets/masala_papad.jpg",
-    discountTag: "25% OFF",
+    discountTag: "38% OFF",
     desc: "Traditional sun-dried spiced happala loaded with freshly cracked black pepper and roasted cumin."
   },
   {
@@ -97,15 +97,28 @@ const PRODUCTS = [
     name: "Nippattu",
     kannada: "ನಿಪ್ಪಟ್ಟು",
     weight: "250gm",
-    sellingPrice: 150,
+    sellingPrice: 125,
     originalPrice: 200,
     category: "Snacks",
     image: "assets/nippattu.jpg",
-    discountTag: "25% OFF",
+    discountTag: "38% OFF",
     desc: "Delectable crunchy flat rice crackers studded with roasted peanuts, gram dal, and curry leaves."
   },
   {
     id: 9,
+    name: "Karjikayi",
+    kannada: "ಕರ್ಜಿಕಾಯಿ",
+    weight: "Minimum 20 pieces",
+    minQuantity: 20,
+    sellingPrice: 15,
+    originalPrice: 25,
+    category: "Snacks",
+    image: "assets/karjikayi.jpg",
+    discountTag: "40% OFF",
+    desc: "Golden crisp traditional festive pastry pockets stuffed with dry coconut, jaggery, cardamom, and roasted poppy seeds."
+  },
+  {
+    id: 10,
     name: "Nati Koli Sambar",
     kannada: "ನಾಟಿ ಕೋಳಿ ಸಾಂಬಾರ್",
     weight: "Authentic Gravy",
@@ -137,6 +150,17 @@ function loadCart() {
   if (savedCart) {
     try {
       cart = JSON.parse(savedCart);
+      // Synchronize existing cart items with latest product prices, weights, and minimums
+      cart.forEach(item => {
+        const prod = PRODUCTS.find(p => p.id === item.id);
+        if (prod) {
+          item.price = prod.sellingPrice;
+          item.weight = prod.weight;
+          if (prod.minQuantity && item.quantity < prod.minQuantity) {
+            item.quantity = prod.minQuantity;
+          }
+        }
+      });
     } catch (e) {
       cart = [];
     }
@@ -204,14 +228,14 @@ function renderProducts(filter = "all") {
           <h3 class="product-title-en">${product.name}</h3>
           <p class="product-title-kn">${product.kannada}</p>
           <div class="product-pricing">
-            <span class="current-price">₹${product.sellingPrice}</span>
+            <span class="current-price">₹${product.sellingPrice}${product.minQuantity ? `<small class="price-unit-hint" style="font-size:0.75rem; color:var(--text-muted); font-weight:500;"> / pc</small>` : ''}</span>
             <span class="original-price">₹${product.originalPrice}</span>
             <span class="savings-label">Save ₹${product.originalPrice - product.sellingPrice}</span>
           </div>
           <div class="product-actions">
             <button class="btn-add-cart" onclick="addToCart(${product.id})">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-              <span>Add to Cart</span>
+              <span>${product.minQuantity ? `Add (Min ${product.minQuantity} pcs)` : 'Add to Cart'}</span>
             </button>
           </div>
         </div>
@@ -227,18 +251,20 @@ function addToCart(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product || product.isComingSoon) return;
 
+  const minQty = product.minQuantity || 1;
   const existing = cart.find(item => item.id === productId);
   if (existing) {
-    existing.quantity += 1;
+    existing.quantity += (product.minQuantity ? 5 : 1);
   } else {
     cart.push({
       id: product.id,
       name: product.name,
       kannada: product.kannada,
       weight: product.weight,
+      minQuantity: product.minQuantity || 1,
       price: product.sellingPrice,
       image: product.image,
-      quantity: 1
+      quantity: minQty
     });
   }
 
@@ -265,8 +291,15 @@ function updateQuantity(productId, delta) {
   const item = cart.find(i => i.id === productId);
   if (!item) return;
 
+  const minQty = item.minQuantity || 1;
+
+  if (delta < 0 && item.quantity <= minQty) {
+    removeFromCart(productId);
+    return;
+  }
+
   item.quantity += delta;
-  if (item.quantity <= 0) {
+  if (item.quantity < minQty) {
     removeFromCart(productId);
   } else {
     saveCart();
@@ -332,7 +365,7 @@ function updateCartUI() {
         <div class="cart-item-details">
           <h4 class="cart-item-title">${item.name}</h4>
           <span class="cart-item-kn">${item.kannada}</span>
-          <span class="cart-item-weight">${item.weight}</span>
+          <span class="cart-item-weight">${item.minQuantity ? `${item.weight} (₹${item.price}/pc)` : item.weight}</span>
           <div class="cart-item-bottom">
             <span class="cart-item-price">₹${item.price * item.quantity}</span>
             <div class="cart-qty-selector">
